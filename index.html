@@ -30,11 +30,117 @@
             background: var(--earth-cream);
             overflow-x: hidden;
             line-height: 1.6;
+            padding-top: 80px;
         }
 
         h1, h2, h3, h4 {
             font-family: 'Merriweather', serif;
             font-weight: 900;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(44, 62, 47, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .navbar.scrolled {
+            background: rgba(44, 62, 47, 0.98);
+            box-shadow: 0 2px 30px rgba(0,0,0,0.2);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-family: 'Merriweather', serif;
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--text-light);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-logo:hover {
+            color: var(--earth-terracotta);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--earth-terracotta);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .nav-menu a:hover {
+            color: var(--earth-terracotta);
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--text-light);
+            transition: all 0.3s ease;
+            border-radius: 3px;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
         }
 
         /* Hero Section */
@@ -591,6 +697,39 @@
 
         /* Responsive */
         @media (max-width: 768px) {
+            body {
+                padding-top: 70px;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: rgba(44, 62, 47, 0.98);
+                flex-direction: column;
+                justify-content: flex-start;
+                padding: 2rem;
+                gap: 1.5rem;
+                transition: left 0.3s ease;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-menu a {
+                font-size: 1.3rem;
+                width: 100%;
+                padding: 1rem 0;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+
             .hero-logo {
                 font-size: 2.5rem;
             }
@@ -652,8 +791,29 @@
     </style>
 </head>
 <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo">Travel for a Cause</a>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#core-idea">The Idea</a></li>
+                <li><a href="#why">Why Us</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#centers">Locations</a></li>
+                <li><a href="#who">Who</a></li>
+                <li><a href="#apply">Join Now</a></li>
+            </ul>
+        </div>
+    </nav>
+
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero" id="hero">
         <div class="hero-slider">
             <div class="hero-slide active"></div>
             <div class="hero-slide"></div>
@@ -674,7 +834,7 @@
     </section>
 
     <!-- Core Idea Section -->
-    <section class="core-idea scroll-animate">
+    <section class="core-idea scroll-animate" id="core-idea">
         <div class="container">
             <h2 class="section-title">🌱 The Core Idea</h2>
             <h3 class="section-subtitle">Not a Trip. A Transformation.</h3>
@@ -720,7 +880,7 @@
     </section>
 
     <!-- Why Travel for a Cause -->
-    <section class="why-section scroll-animate">
+    <section class="why-section scroll-animate" id="why">
         <div class="container">
             <h2 class="section-title">✨ Why Travel for a Cause</h2>
             
@@ -764,7 +924,7 @@
     </section>
 
     <!-- Experience Design -->
-    <section class="experience-section scroll-animate">
+    <section class="experience-section scroll-animate" id="experience">
         <div class="container">
             <h2 class="section-title">🧭 Experience Design</h2>
             <h3 class="section-subtitle">3-7 Day Immersive Journey</h3>
@@ -885,7 +1045,7 @@
     </section>
 
     <!-- Community Centers -->
-    <section class="centers-section scroll-animate">
+    <section class="centers-section scroll-animate" id="centers">
         <div class="container">
             <h2 class="section-title">🏡 Our Community Centres</h2>
             
@@ -1015,7 +1175,7 @@
     </section>
 
     <!-- Who Is This For -->
-    <section class="core-idea scroll-animate">
+    <section class="core-idea scroll-animate" id="who">
         <div class="container">
             <h2 class="section-title">🚀 Who Is This For?</h2>
             
@@ -1055,6 +1215,34 @@
     </section>
 
     <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        const navLinks = document.querySelectorAll('.nav-menu a');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking a link
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Navbar scroll effect
+        const navbar = document.querySelector('.navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
         // Hero Image Slider
         let currentSlide = 0;
         const slides = document.querySelectorAll('.hero-slide');
