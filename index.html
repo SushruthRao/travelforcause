@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel for a Cause - Explore. Serve. Belong.</title>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --earth-dark: #2c3e2f;
+            --earth-green: #4a7c59;
+            --earth-sage: #7a9d7d;
+            --earth-sand: #e8dcc4;
+            --earth-cream: #faf6ef;
+            --earth-terracotta: #d4845f;
+            --earth-ocean: #4a90a4;
+            --text-dark: #1a1a1a;
+            --text-light: #f5f5f5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            color: var(--text-dark);
+            background: var(--earth-cream);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Merriweather', serif;
+            font-weight: 900;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--earth-dark) 0%, var(--earth-green) 100%);
+        }
+
+        .hero-slider {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .hero-slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-slide.active {
+            opacity: 0.4;
+        }
+
+        .hero-slide:nth-child(1) { background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600"><rect fill="%234a7c59" width="800" height="600"/><text x="400" y="300" font-size="60" text-anchor="middle" fill="%23fff" opacity="0.5">Photo 1</text></svg>'); }
+        .hero-slide:nth-child(2) { background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600"><rect fill="%237a9d7d" width="800" height="600"/><text x="400" y="300" font-size="60" text-anchor="middle" fill="%23fff" opacity="0.5">Photo 2</text></svg>'); }
+        .hero-slide:nth-child(3) { background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600"><rect fill="%234a90a4" width="800" height="600"/><text x="400" y="300" font-size="60" text-anchor="middle" fill="%23fff" opacity="0.5">Photo 3</text></svg>'); }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: var(--text-light);
+            padding: 2rem;
+            max-width: 1200px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-logo {
+            font-size: 4.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            letter-spacing: -2px;
+            text-shadow: 4px 4px 20px rgba(0,0,0,0.5);
+        }
+
+        .hero-tagline {
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            letter-spacing: 2px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            font-style: italic;
+            margin-bottom: 3rem;
+            opacity: 0.95;
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            padding: 1.2rem 3rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-primary {
+            background: var(--earth-terracotta);
+            color: var(--text-light);
+            border: 2px solid var(--earth-terracotta);
+        }
+
+        .cta-secondary {
+            background: transparent;
+            color: var(--text-light);
+            border: 2px solid var(--text-light);
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 6rem 2rem;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: var(--earth-terracotta);
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--earth-green);
+            font-weight: 600;
+        }
+
+        /* Core Idea Section */
+        .core-idea {
+            background: linear-gradient(135deg, var(--earth-cream) 0%, var(--earth-sand) 100%);
+        }
+
+        .core-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+
+        .core-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+
+        .core-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .core-features {
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        .core-features li {
+            padding: 1rem 0;
+            padding-left: 2rem;
+            position: relative;
+            font-size: 1.1rem;
+        }
+
+        .core-features li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--earth-terracotta);
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .core-quote {
+            font-style: italic;
+            font-size: 1.5rem;
+            color: var(--earth-green);
+            text-align: center;
+            margin: 2rem 0;
+            padding: 2rem;
+            background: rgba(255,255,255,0.5);
+            border-radius: 20px;
+            border-left: 5px solid var(--earth-terracotta);
+        }
+
+        /* Why Section */
+        .why-section {
+            background: var(--earth-dark);
+            color: var(--text-light);
+        }
+
+        .why-section .section-title::after {
+            background: var(--earth-terracotta);
+        }
+
+        .why-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .why-card {
+            background: rgba(255,255,255,0.1);
+            padding: 2.5rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.4s ease;
+        }
+
+        .why-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255,255,255,0.15);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .why-card h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--earth-terracotta);
+        }
+
+        .why-card p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .why-card ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .why-card li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .why-card li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--earth-terracotta);
+            font-weight: bold;
+        }
+
+        /* Image Placeholder Grid */
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .image-placeholder {
+            aspect-ratio: 4/3;
+            background: linear-gradient(135deg, var(--earth-sage) 0%, var(--earth-ocean) 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--text-light);
+            font-weight: 600;
+            text-align: center;
+            padding: 2rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .image-placeholder::before {
+            content: '📷';
+            font-size: 4rem;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.3;
+        }
+
+        .image-placeholder:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        /* Video Section */
+        .video-section {
+            background: linear-gradient(135deg, var(--earth-green) 0%, var(--earth-ocean) 100%);
+            color: var(--text-light);
+            text-align: center;
+        }
+
+        .video-container {
+            max-width: 900px;
+            margin: 3rem auto;
+            aspect-ratio: 16/9;
+            background: rgba(0,0,0,0.3);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            border: 3px solid rgba(255,255,255,0.2);
+        }
+
+        .video-placeholder {
+            font-size: 2rem;
+            font-weight: 600;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .video-placeholder::before {
+            content: '▶';
+            font-size: 5rem;
+            color: var(--earth-terracotta);
+            opacity: 0.8;
+        }
+
+        /* Experience Design Timeline */
+        .experience-section {
+            background: var(--earth-cream);
+        }
+
+        .timeline {
+            max-width: 800px;
+            margin: 4rem auto;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--earth-terracotta);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: auto;
+            text-align: left;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-right: auto;
+            text-align: right;
+        }
+
+        .timeline-content {
+            width: 45%;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 2rem;
+            width: 20px;
+            height: 20px;
+            background: var(--earth-terracotta);
+            border-radius: 50%;
+            border: 3px solid var(--earth-cream);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content::before {
+            left: -60px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::before {
+            right: -60px;
+        }
+
+        .timeline-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--earth-green);
+        }
+
+        .timeline-content ul {
+            list-style: none;
+        }
+
+        .timeline-content li {
+            padding: 0.5rem 0;
+        }
+
+        /* Community Centers */
+        .centers-section {
+            background: var(--earth-sand);
+        }
+
+        .center-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 4rem;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+        }
+
+        .center-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+
+        .center-header {
+            padding: 2.5rem;
+            background: linear-gradient(135deg, var(--earth-green) 0%, var(--earth-ocean) 100%);
+            color: var(--text-light);
+        }
+
+        .center-header h3 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .center-images {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            padding: 1rem;
+        }
+
+        .center-content {
+            padding: 2.5rem;
+        }
+
+        .center-content h4 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--earth-green);
+        }
+
+        .center-content ul {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .center-content li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .center-content li::before {
+            content: '🌿';
+            position: absolute;
+            left: 0;
+        }
+
+        .learn-box {
+            background: var(--earth-cream);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--earth-terracotta);
+            margin-top: 1.5rem;
+        }
+
+        /* Impact Section */
+        .impact-section {
+            background: linear-gradient(135deg, var(--earth-dark) 0%, var(--earth-green) 100%);
+            color: var(--text-light);
+            text-align: center;
+        }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .impact-item {
+            padding: 2rem;
+        }
+
+        .impact-item h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .impact-item p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* Final CTA Section */
+        .final-cta {
+            background: var(--earth-terracotta);
+            color: var(--text-light);
+            text-align: center;
+            padding: 5rem 2rem;
+        }
+
+        .final-cta h2 {
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .final-cta p {
+            font-size: 1.5rem;
+            margin-bottom: 3rem;
+            font-style: italic;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-logo {
+                font-size: 2.5rem;
+            }
+
+            .hero-tagline {
+                font-size: 1.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .core-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-content {
+                width: calc(100% - 60px);
+                margin-left: 60px !important;
+                text-align: left !important;
+            }
+
+            .timeline-item:nth-child(even) .timeline-content::before,
+            .timeline-item:nth-child(odd) .timeline-content::before {
+                left: -40px;
+                right: auto;
+            }
+
+            .center-images {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-ctas {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        /* Scroll Animations */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .scroll-animate.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-slider">
+            <div class="hero-slide active"></div>
+            <div class="hero-slide"></div>
+            <div class="hero-slide"></div>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-logo">Travel for a Cause</h1>
+            <p class="hero-tagline">Explore. Serve. Belong.</p>
+            <p class="hero-subtitle">
+                Not charity. Not tourism.<br>
+                A mission-based travel experience for youth.
+            </p>
+            <div class="hero-ctas">
+                <a href="#apply" class="cta-btn cta-primary">👉 Join a Journey</a>
+                <a href="#partner" class="cta-btn cta-secondary">👉 Partner With Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Idea Section -->
+    <section class="core-idea scroll-animate">
+        <div class="container">
+            <h2 class="section-title">🌱 The Core Idea</h2>
+            <h3 class="section-subtitle">Not a Trip. A Transformation.</h3>
+            
+            <div class="core-content">
+                <div class="core-text">
+                    <p><strong>Travel for a Cause</strong> is a <strong>youth-centric experiential travel initiative</strong> that turns journeys into <strong>meaningful action</strong>.</p>
+                    
+                    <p>Young people travel to stunning natural and cultural landscapes — <strong>not as tourists, but as co-creators of positive change</strong>.</p>
+                    
+                    <h4 style="margin-top: 2rem; font-size: 1.5rem; color: var(--earth-green);">What makes it different</h4>
+                    <ul class="core-features">
+                        <li>Real-world problems, real communities</li>
+                        <li>Hands-on learning, not lectures</li>
+                        <li>Stories that stay long after the journey ends</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <div class="image-placeholder">
+                        Image:<br>Youth in Action
+                    </div>
+                </div>
+            </div>
+            
+            <div class="core-quote">
+                "I didn't just travel. I left a footprint that mattered."
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section class="video-section scroll-animate">
+        <div class="container">
+            <h2 class="section-title">Experience the Journey</h2>
+            <div class="video-container">
+                <div class="video-placeholder">
+                    Video Placeholder
+                    <span style="font-size: 1.2rem;">Your journey video will go here</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Travel for a Cause -->
+    <section class="why-section scroll-animate">
+        <div class="container">
+            <h2 class="section-title">✨ Why Travel for a Cause</h2>
+            
+            <div class="image-grid">
+                <div class="image-placeholder">Nature & Adventure</div>
+                <div class="image-placeholder">Community Connection</div>
+                <div class="image-placeholder">Youth Engagement</div>
+            </div>
+            
+            <div class="why-cards">
+                <div class="why-card">
+                    <h3>✅ Adventure + Purpose</h3>
+                    <p>Forests, rivers, coasts, farms, heritage villages</p>
+                    <p><strong>Hands-on work in:</strong></p>
+                    <ul>
+                        <li>Conservation</li>
+                        <li>Education</li>
+                        <li>Health & livelihoods</li>
+                    </ul>
+                </div>
+                
+                <div class="why-card">
+                    <h3>🤝 Social Belonging</h3>
+                    <ul>
+                        <li>Small cohorts (15-30 participants)</li>
+                        <li>Team challenges, campfires, reflections</li>
+                        <li>Feels like a <strong>tribe</strong>, not a tour</li>
+                    </ul>
+                </div>
+                
+                <div class="why-card">
+                    <h3>🌍 Identity & Impact</h3>
+                    <ul>
+                        <li>Certificates, impact badges, portfolios</li>
+                        <li>Linked to SDGs, climate action & social innovation</li>
+                        <li>Powerful for <strong>CVs, college apps, LinkedIn</strong> — but felt, not forced</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Design -->
+    <section class="experience-section scroll-animate">
+        <div class="container">
+            <h2 class="section-title">🧭 Experience Design</h2>
+            <h3 class="section-subtitle">3-7 Day Immersive Journey</h3>
+            
+            <div class="image-grid" style="margin-bottom: 4rem;">
+                <div class="image-placeholder">Journey Begins</div>
+                <div class="image-placeholder">Making Impact</div>
+                <div class="image-placeholder">Celebration</div>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Day 1 — Arrival & Belonging</h3>
+                        <ul>
+                            <li>🏞️ Story of the place</li>
+                            <li>🤝 Meet the community</li>
+                            <li>💭 Why this place matters</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Day 2-4 — The Cause</h3>
+                        <p style="margin-bottom: 1rem;">Participants work on one focus area:</p>
+                        <ul>
+                            <li>🐢 Wildlife & habitat restoration</li>
+                            <li>🌾 Sustainable farming & food systems</li>
+                            <li>💧 Water & waste solutions</li>
+                            <li>🧒 Learning labs with local children</li>
+                            <li>🧵 Heritage & local livelihoods</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Day 5 — Reflection & Showcase</h3>
+                        <ul>
+                            <li>📊 Youth present learnings & solutions</li>
+                            <li>🎉 Community celebration</li>
+                            <li>📱 Digital storytelling workshop</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why These Causes Matter -->
+    <section class="impact-section scroll-animate">
+        <div class="container">
+            <h2 class="section-title">🌍 Why These Causes Matter</h2>
+            
+            <div class="image-grid" style="margin-bottom: 3rem;">
+                <div class="image-placeholder">Climate Action</div>
+                <div class="image-placeholder">Community Impact</div>
+            </div>
+            
+            <div class="impact-grid">
+                <div class="impact-item">
+                    <h3>Climate Change</h3>
+                    <p><em>Not a chapter — their future.</em></p>
+                </div>
+                
+                <div class="impact-item">
+                    <h3>Mental Health & Wellness</h3>
+                    <p><em>Not a trend — survival.</em></p>
+                </div>
+                
+                <div class="impact-item">
+                    <h3>Community Connection</h3>
+                    <p><em>Not case studies — people.</em></p>
+                </div>
+                
+                <div class="impact-item">
+                    <h3>Food & Sustainability</h3>
+                    <p><em>Not just fuel — connection.</em></p>
+                </div>
+                
+                <div class="impact-item">
+                    <h3>Culture & Heritage</h3>
+                    <p><em>Not old — identity.</em></p>
+                </div>
+            </div>
+            
+            <p style="font-size: 1.8rem; margin-top: 3rem; font-weight: 600;">👉 Travel for a Cause turns concern into action.</p>
+        </div>
+    </section>
+
+    <!-- Make It Cool Section -->
+    <section class="core-idea scroll-animate">
+        <div class="container">
+            <h2 class="section-title">😎 Make It Cool, Not Heavy</h2>
+            
+            <div class="image-grid">
+                <div class="image-placeholder">Youth Culture</div>
+                <div class="image-placeholder">Local Experiences</div>
+                <div class="image-placeholder">Authentic Moments</div>
+            </div>
+            
+            <div class="core-content" style="margin-top: 3rem;">
+                <div class="core-text">
+                    <ul class="core-features">
+                        <li>No long lectures</li>
+                        <li>Learning by doing</li>
+                        <li>Minimal uniforms, maximum comfort</li>
+                        <li>Local food, music, stories</li>
+                        <li>Phones allowed → used for <strong>storytelling, not scrolling</strong></li>
+                    </ul>
+                </div>
+                <div class="image-placeholder">
+                    Authentic<br>Experiences
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Centers -->
+    <section class="centers-section scroll-animate">
+        <div class="container">
+            <h2 class="section-title">🏡 Our Community Centres</h2>
+            
+            <!-- Gokarna -->
+            <div class="center-card">
+                <div class="center-header">
+                    <h3>🌊 Gokarna</h3>
+                    <p style="font-size: 1.3rem;">Coastal Conservation & Conscious Living</p>
+                </div>
+                <div class="center-images">
+                    <div class="image-placeholder">Beach 1</div>
+                    <div class="image-placeholder">Beach 2</div>
+                    <div class="image-placeholder">Beach 3</div>
+                </div>
+                <div class="center-content">
+                    <h4>Activities</h4>
+                    <ul>
+                        <li>Beach clean-ups & waste audits</li>
+                        <li>Dune & mangrove restoration</li>
+                        <li>Interaction with fishing communities</li>
+                        <li>Sustainable tourism mapping</li>
+                        <li>Ocean mindfulness, yoga, journaling</li>
+                    </ul>
+                    <div class="learn-box">
+                        <strong>Youth Learn:</strong> How oceans, livelihoods, and mindful travel are interconnected.
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Majuli -->
+            <div class="center-card">
+                <div class="center-header">
+                    <h3>🌾 Majuli</h3>
+                    <p style="font-size: 1.3rem;">Culture, Ecology & Living Heritage</p>
+                </div>
+                <div class="center-images">
+                    <div class="image-placeholder">Island 1</div>
+                    <div class="image-placeholder">Island 2</div>
+                    <div class="image-placeholder">Island 3</div>
+                </div>
+                <div class="center-content">
+                    <h4>Activities</h4>
+                    <ul>
+                        <li>Brahmaputra river ecology</li>
+                        <li>Satra life & traditions</li>
+                        <li>Mask-making, music, storytelling</li>
+                        <li>Flood resilience practices</li>
+                        <li>Oral history with elders</li>
+                    </ul>
+                    <div class="learn-box">
+                        <strong>Youth Learn:</strong> How culture and ecology build resilience.
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Lepakshi -->
+            <div class="center-card">
+                <div class="center-header">
+                    <h3>🛕 Lepakshi</h3>
+                    <p style="font-size: 1.3rem;">Heritage, Art & Rural Livelihoods</p>
+                </div>
+                <div class="center-images">
+                    <div class="image-placeholder">Temple 1</div>
+                    <div class="image-placeholder">Temple 2</div>
+                    <div class="image-placeholder">Temple 3</div>
+                </div>
+                <div class="center-content">
+                    <h4>Activities</h4>
+                    <ul>
+                        <li>Heritage walks & symbolism</li>
+                        <li>Conservation basics</li>
+                        <li>Artisan interaction</li>
+                        <li>Craft documentation</li>
+                        <li>Sketching, photography, storytelling</li>
+                    </ul>
+                    <div class="learn-box">
+                        <strong>Youth Learn:</strong> Heritage is a living economy and identity.
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Srirangapatna -->
+            <div class="center-card">
+                <div class="center-header">
+                    <h3>🌿 Srirangapatna</h3>
+                    <p style="font-size: 1.3rem;">Rivers, History & Community Ecology</p>
+                </div>
+                <div class="center-images">
+                    <div class="image-placeholder">River 1</div>
+                    <div class="image-placeholder">River 2</div>
+                    <div class="image-placeholder">River 3</div>
+                </div>
+                <div class="center-content">
+                    <h4>Activities</h4>
+                    <ul>
+                        <li>Kaveri river & wetland studies</li>
+                        <li>Riparian restoration</li>
+                        <li>Heritage walks & narratives</li>
+                        <li>Water conservation with communities</li>
+                        <li>Youth-led river campaigns</li>
+                    </ul>
+                    <div class="learn-box">
+                        <strong>Youth Learn:</strong> How rivers shape civilizations and futures.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Feels -->
+    <section class="why-section scroll-animate">
+        <div class="container">
+            <h2 class="section-title">🌱 How the Experience Feels</h2>
+            
+            <div class="image-grid">
+                <div class="image-placeholder">Deep Connection</div>
+                <div class="image-placeholder">Collaborative Work</div>
+                <div class="image-placeholder">Purposeful Action</div>
+            </div>
+            
+            <div style="max-width: 800px; margin: 3rem auto; font-size: 1.5rem; text-align: center;">
+                <p style="margin: 1.5rem 0;">No sightseeing — only <strong>deep seeing</strong></p>
+                <p style="margin: 1.5rem 0;">No charity — only <strong>collaboration</strong></p>
+                <p style="margin: 1.5rem 0;">No pressure — only <strong>purpose</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who Is This For -->
+    <section class="core-idea scroll-animate">
+        <div class="container">
+            <h2 class="section-title">🚀 Who Is This For?</h2>
+            
+            <div class="image-grid">
+                <div class="image-placeholder">Students</div>
+                <div class="image-placeholder">Youth Groups</div>
+                <div class="image-placeholder">Volunteers</div>
+            </div>
+            
+            <div style="max-width: 800px; margin: 3rem auto;">
+                <ul class="core-features" style="font-size: 1.2rem;">
+                    <li>School students (Grades 8-12)</li>
+                    <li>College & university youth</li>
+                    <li>Gap-year explorers</li>
+                    <li>NSS / CAS / service-learning programmes</li>
+                    <li>Youth-focused corporate volunteering</li>
+                </ul>
+            </div>
+            
+            <div class="core-quote">
+                Travel for a Cause doesn't change the world in a week.<br>
+                It changes how we see the world — and ourselves.
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta" id="apply">
+        <div class="container">
+            <h2>Ready to Begin Your Journey?</h2>
+            <p>Join us in creating meaningful change through travel</p>
+            <div class="hero-ctas">
+                <a href="#" class="cta-btn cta-primary">👉 Apply for a Journey</a>
+                <a href="#partner" class="cta-btn cta-secondary">👉 Bring This to Your School / Organisation</a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Hero Image Slider
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.hero-slide');
+        
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+        
+        setInterval(nextSlide, 4000);
+
+        // Scroll Animation Observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-animate').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
