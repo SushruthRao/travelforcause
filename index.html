@@ -176,10 +176,21 @@
             opacity: 0.4;
         }
 
-        .hero-slide:nth-child(1) { background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600"><rect fill="%234a7c59" width="800" height="600"/><text x="400" y="300" font-size="60" text-anchor="middle" fill="%23fff" opacity="0.5">Photo 1</text></svg>'); }
-        .hero-slide:nth-child(2) { background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600"><rect fill="%237a9d7d" width="800" height="600"/><text x="400" y="300" font-size="60" text-anchor="middle" fill="%23fff" opacity="0.5">Photo 2</text></svg>'); }
-        .hero-slide:nth-child(3) { background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600"><rect fill="%234a90a4" width="800" height="600"/><text x="400" y="300" font-size="60" text-anchor="middle" fill="%23fff" opacity="0.5">Photo 3</text></svg>'); }
-
+      .hero-slide:nth-child(1) { 
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('/53234.jpg'); 
+    background-size: cover; 
+    background-position: center; 
+}
+.hero-slide:nth-child(2) { 
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('/trek.jpg'); 
+    background-size: cover; 
+    background-position: center; 
+}
+.hero-slide:nth-child(3) { 
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('/trek33.jpg'); 
+    background-size: cover; 
+    background-position: center; 
+}
         .hero-content {
             position: relative;
             z-index: 2;
@@ -659,6 +670,65 @@
             line-height: 1.8;
         }
 
+        /* Stakeholders Section */
+        .stakeholder-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .stakeholder-card {
+            background: rgba(255,255,255,0.1);
+            padding: 2.5rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.4s ease;
+            text-align: left;
+        }
+
+        .stakeholder-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255,255,255,0.15);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .stakeholder-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .stakeholder-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--earth-terracotta);
+            text-align: center;
+        }
+
+        .stakeholder-card ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .stakeholder-card li {
+            padding: 0.7rem 0;
+            padding-left: 1.8rem;
+            position: relative;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .stakeholder-card li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--earth-terracotta);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
         /* Final CTA Section */
         .final-cta {
             background: var(--earth-terracotta);
@@ -775,6 +845,11 @@
                 flex-direction: column;
                 gap: 1rem;
             }
+
+            .stakeholder-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
         }
 
         /* Scroll Animations */
@@ -806,7 +881,7 @@
                 <li><a href="#why">Why Us</a></li>
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#centers">Locations</a></li>
-                <li><a href="#who">Who</a></li>
+                <li><a href="#stakeholders">Benefits</a></li>
                 <li><a href="#apply">Join Now</a></li>
             </ul>
         </div>
@@ -841,9 +916,9 @@
             
             <div class="core-content">
                 <div class="core-text">
-                    <p><strong>Travel for a Cause</strong> is a <strong>travel initiative</strong> that turns journeys into <strong>meaningful action</strong>.</p>
+                    <p><strong>Travel for a Cause</strong> is a <strong>youth-centric experiential travel initiative</strong> that turns journeys into <strong>meaningful action</strong>.</p>
                     
-                    <p>People travel to stunning natural and cultural landscapes — <strong>not as tourists, but as co-creators of positive change</strong>.</p>
+                    <p>Young people travel to stunning natural and cultural landscapes — <strong>not as tourists, but as co-creators of positive change</strong>.</p>
                     
                     <h4 style="margin-top: 2rem; font-size: 1.5rem; color: var(--earth-green);">What makes it different</h4>
                     <ul class="core-features">
@@ -855,8 +930,7 @@
                 
                 <div>
                     <div class="image-placeholder">
-                        Image:<br>Youth in Action
-                    </div>
+<img src="gokarna.jpg" alt="Youth in Action" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">                    </div>
                 </div>
             </div>
             
@@ -871,10 +945,10 @@
         <div class="container">
             <h2 class="section-title">Experience the Journey</h2>
             <div class="video-container">
-                <div class="video-placeholder">
-                    Video Placeholder
-                    <span style="font-size: 1.2rem;">Your journey video will go here</span>
-                </div>
+               <video controls style="width: 100%; height: 100%; border-radius: 20px;">
+    <source src="video.mp4" type="video/mp4">
+    Your browser doesn't support the video tag.
+</video>
             </div>
         </div>
     </section>
@@ -885,9 +959,9 @@
             <h2 class="section-title">✨ Why Travel for a Cause</h2>
             
             <div class="image-grid">
-                <div class="image-placeholder">Nature & Adventure</div>
-                <div class="image-placeholder">Community Connection</div>
-                <div class="image-placeholder">Youth Engagement</div>
+                <img src="/img1.jpg" alt="Nature & Adventure" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
+    <img src="/img54.jpg" alt="Community Connection" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
+    <img src="img3.jpg" alt="Youth Engagement" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
             </div>
             
             <div class="why-cards">
@@ -930,10 +1004,10 @@
             <h3 class="section-subtitle">3-7 Day Immersive Journey</h3>
             
             <div class="image-grid" style="margin-bottom: 4rem;">
-                <div class="image-placeholder">Journey Begins</div>
-                <div class="image-placeholder">Making Impact</div>
-                <div class="image-placeholder">Celebration</div>
-            </div>
+    <img src="/picc1.jpg" alt="Journey Begins" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
+    <img src="/picc2.jpg" alt="Making Impact" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
+    <img src="/srirangapatna.jpg" alt="Celebration" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
+</div>
             
             <div class="timeline">
                 <div class="timeline-item">
@@ -1198,6 +1272,94 @@
             <div class="core-quote">
                 Travel for a Cause doesn't change the world in a week.<br>
                 It changes how we see the world — and ourselves.
+            </div>
+        </div>
+    </section>
+
+    <!-- Stakeholders & Benefits -->
+    <section class="why-section scroll-animate" id="stakeholders">
+        <div class="container">
+            <h2 class="section-title">🤝 Who Benefits & How</h2>
+            <h3 class="section-subtitle" style="color: var(--earth-sand);">Creating Value for Everyone in the Journey</h3>
+            
+            <div class="stakeholder-grid">
+                <!-- Volunteers -->
+                <div class="stakeholder-card">
+                    <div class="stakeholder-icon">🙋‍♀️</div>
+                    <h3>Volunteers</h3>
+                    <ul>
+                        <li>Hands-on experience addressing real-world social and environmental issues</li>
+                        <li>Development of leadership, teamwork, and problem-solving skills</li>
+                        <li>Sense of purpose and personal fulfillment through service</li>
+                        <li>Exposure to diverse communities and contexts</li>
+                        <li>Certificates, recognition, and experiential learning credentials</li>
+                    </ul>
+                </div>
+
+                <!-- Participants -->
+                <div class="stakeholder-card">
+                    <div class="stakeholder-icon">✈️</div>
+                    <h3>Participants (Travelers)</h3>
+                    <ul>
+                        <li>Meaningful travel that combines exploration with social impact</li>
+                        <li>Deeper cultural and community immersion</li>
+                        <li>Personal growth, reflection, and mindset shift</li>
+                        <li>Mental wellness through purposeful engagement and nature exposure</li>
+                        <li>Lifelong memories, stories, and learning experiences</li>
+                    </ul>
+                </div>
+
+                <!-- Local Communities -->
+                <div class="stakeholder-card">
+                    <div class="stakeholder-icon">🏘️</div>
+                    <h3>Local Communities</h3>
+                    <ul>
+                        <li>Improved access to health, cleanliness, education, and environmental initiatives</li>
+                        <li>Economic opportunities through local employment, homestays, food, and services</li>
+                        <li>Strengthened community capacity and self-reliance</li>
+                        <li>Preservation of local culture, ecology, and heritage</li>
+                        <li>Long-term partnerships rather than one-time interventions</li>
+                    </ul>
+                </div>
+
+                <!-- School Students -->
+                <div class="stakeholder-card">
+                    <div class="stakeholder-icon">🎒</div>
+                    <h3>School Students</h3>
+                    <ul>
+                        <li>Experiential, beyond-classroom learning</li>
+                        <li>Awareness of environment, health, and civic responsibility</li>
+                        <li>Development of empathy, discipline, and teamwork</li>
+                        <li>Early exposure to social responsibility and sustainability</li>
+                        <li>Improved communication and collaborative skills</li>
+                    </ul>
+                </div>
+
+                <!-- Youth & College Students -->
+                <div class="stakeholder-card">
+                    <div class="stakeholder-icon">🎓</div>
+                    <h3>Youth & College Students</h3>
+                    <ul>
+                        <li>Leadership development and exposure to social innovation</li>
+                        <li>Career clarity and purpose-driven pathways</li>
+                        <li>Strong value addition to CVs, SOPs, fellowships, and higher studies</li>
+                        <li>Peer learning, mentorship, and networking opportunities</li>
+                        <li>Confidence gained through real-world problem-solving</li>
+                    </ul>
+                </div>
+
+                <!-- Corporates & CSR -->
+                <div class="stakeholder-card">
+                    <div class="stakeholder-icon">🏢</div>
+                    <h3>Corporates & CSR Partners</h3>
+                    <ul>
+                        <li>Strong alignment with CSR, ESG, and UN SDG goals</li>
+                        <li>Employee volunteering that strengthens culture and engagement</li>
+                        <li>Measurable, reportable, and credible social impact</li>
+                        <li>Enhanced brand trust, goodwill, and community relationships</li>
+                        <li>Scalable, long-term partnerships with visible outcomes</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
